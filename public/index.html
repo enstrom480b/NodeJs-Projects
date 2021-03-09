@@ -1,0 +1,25 @@
+<h1>file upload</h1>
+<form action="/upload" method="post" enctype="multipart/form-data">
+<input type="file" name="avatar" multiple>
+<button>Submit</button>
+<div class="images"></div>
+<script>
+const loadimages=async()=>{
+const response=await fetch('http://localhost:3000/images')
+.then(res=>{
+return res.json()
+})
+const imageelement=document.querySelector('.images')
+imageelement.innerHTML='gcvghc'
+console.log(response.images[0].filepath)
+response.images.forEach((image)=>{
+const img=document.createElement('img')
+img.src=image.filepath
+img.height='200'
+imageelement.appendChild(img)
+})
+}
+window.onload=loadimages
+</script>
+
+</form>
